@@ -71,12 +71,19 @@
 #define KEY_F11       0xCC
 #define KEY_F12       0xCD
 
-//  Low level key report: up to 6 keys and shift, ctrl etc at once
+// KEYS_ROLLOVER controls the maximum number of simultaneous key presses.
+// If you change this to anything other than 0x06 (six keys), your keyboard
+// may not work in your computer's BIOS or firmware interface.
+//
+// This must be a single byte, as it goes in the HID descriptor.
+#define KEYS_ROLLOVER 0x06
+
+//  Low level key report: up to KEYS_ROLLOVER keys and shift, ctrl etc at once
 typedef struct
 {
   uint8_t modifiers;
   uint8_t reserved;
-  uint8_t keys[6];
+  uint8_t keys[KEYS_ROLLOVER];
 } KeyReport;
 
 class Keyboard_ : public Print
