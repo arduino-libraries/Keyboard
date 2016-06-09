@@ -28,36 +28,34 @@
 //	Keyboard
 
 static const uint8_t _hidReportDescriptor[] PROGMEM = {
-
-  //  Keyboard
-    0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)  // 47
-    0x09, 0x06,                    // USAGE (Keyboard)
-    0xa1, 0x01,                    // COLLECTION (Application)
-    0x85, 0x02,                    //   REPORT_ID (2)
-    0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
-   
-  0x19, 0xe0,                    //   USAGE_MINIMUM (Keyboard LeftControl)
-    0x29, 0xe7,                    //   USAGE_MAXIMUM (Keyboard Right GUI)
-    0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
-    0x25, 0x01,                    //   LOGICAL_MAXIMUM (1)
-    0x75, 0x01,                    //   REPORT_SIZE (1)
-    
-  0x95, 0x08,                    //   REPORT_COUNT (8)
-    0x81, 0x02,                    //   INPUT (Data,Var,Abs)
-    0x95, 0x01,                    //   REPORT_COUNT (1)
-    0x75, 0x08,                    //   REPORT_SIZE (8)
-    0x81, 0x03,                    //   INPUT (Cnst,Var,Abs)
-    
-  0x95, 0x06,                    //   REPORT_COUNT (6)
-    0x75, 0x08,                    //   REPORT_SIZE (8)
-    0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
-    0x25, 0x65,                    //   LOGICAL_MAXIMUM (101)
-    0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
-    
-  0x19, 0x00,                    //   USAGE_MINIMUM (Reserved (no event indicated))
-    0x29, 0x65,                    //   USAGE_MAXIMUM (Keyboard Application)
-    0x81, 0x00,                    //   INPUT (Data,Ary,Abs)
-    0xc0,                          // END_COLLECTION
+	//  Keyboard
+	0x05, 0x01,          // USAGE_PAGE (Generic Desktop)
+	0x09, 0x06,          // USAGE (Keyboard)
+	0xa1, 0x01,          // COLLECTION (Application)
+	0x85, 0x02,          //   REPORT_ID (2)
+	0x05, 0x07,          //   USAGE_PAGE (Keyboard)
+	// Modifier keys
+	0x19, 0xe0,          //   USAGE_MINIMUM (Keyboard Left Control)
+	0x29, 0xe7,          //   USAGE_MAXIMUM (Keyboard Right GUI)
+	0x15, 0x00,          //   LOGICAL_MINIMUM (0)
+	0x25, 0x01,          //   LOGICAL_MAXIMUM (1)
+	0x75, 0x01,          //   REPORT_SIZE (1)
+	0x95, 0x08,          //   REPORT_COUNT (8)
+	0x81, 0x02,          //   INPUT (Data,Var,Abs)
+	// Reserved byte
+	0x75, 0x08,          //   REPORT_SIZE (8)
+	0x95, 0x01,          //   REPORT_COUNT (1)
+	0x81, 0x03,          //   INPUT (Cnst,Var,Abs)
+	// Pressed keys
+	0x19, 0x00,          //   USAGE_MINIMUM (Reserved (no event indicated))
+	0x29, 0x65,          //   USAGE_MAXIMUM (Keyboard Application)
+	0x15, 0x00,          //   LOGICAL_MINIMUM (0)
+	0x25, 0x65,          //   LOGICAL_MAXIMUM (101)
+	0x75, 0x08,          //   REPORT_SIZE (8)
+	0x95, KEYS_ROLLOVER, //   REPORT_COUNT (KEYS_ROLLOVER)
+	0x81, 0x00,          //   INPUT (Data,Ary,Abs)
+	// End
+	0xc0,                // END_COLLECTION
 };
 
 Keyboard_::Keyboard_(void) 
@@ -243,19 +241,23 @@ size_t Keyboard_::press(uint8_t k)
 		}
 	}
 	
-	// Add k to the key report only if it's not already present
-	// and if there is an empty slot.
-	if (_keyReport.keys[0] != k && _keyReport.keys[1] != k && 
-		_keyReport.keys[2] != k && _keyReport.keys[3] != k &&
-		_keyReport.keys[4] != k && _keyReport.keys[5] != k) {
-		
-		for (i=0; i<6; i++) {
+	// Search the pressed keys list for this key.
+	for (i = 0 ; i < KEYS_ROLLOVER ; i++) {
+		if (_keyReport.keys[i] == k) {
+			break; // Just stop looking if it's found.
+		}
+	}
+	// If the search got to the end without finding anything.
+	if (i >= KEYS_ROLLOVER) {
+		// Find an empty slot and add this key.
+		for (i = 0 ; i < KEYS_ROLLOVER ; i++) {
 			if (_keyReport.keys[i] == 0x00) {
 				_keyReport.keys[i] = k;
 				break;
 			}
 		}
-		if (i == 6) {
+		// Error out if every slot already has something in it.
+		if (i >= KEYS_ROLLOVER) {
 			setWriteError();
 			return 0;
 		}	
@@ -288,9 +290,11 @@ size_t Keyboard_::release(uint8_t k)
 	
 	// Test the key report to see if k is present.  Clear it if it exists.
 	// Check all positions in case the key is present more than once (which it shouldn't be)
-	for (i=0; i<6; i++) {
-		if (0 != k && _keyReport.keys[i] == k) {
-			_keyReport.keys[i] = 0x00;
+	if (k != 0) {
+		for (i = 0 ; i < KEYS_ROLLOVER ; i++) {
+			if (_keyReport.keys[i] == k) {
+				_keyReport.keys[i] = 0x00;
+			}
 		}
 	}
 
@@ -300,12 +304,10 @@ size_t Keyboard_::release(uint8_t k)
 
 void Keyboard_::releaseAll(void)
 {
-	_keyReport.keys[0] = 0;
-	_keyReport.keys[1] = 0;	
-	_keyReport.keys[2] = 0;
-	_keyReport.keys[3] = 0;	
-	_keyReport.keys[4] = 0;
-	_keyReport.keys[5] = 0;	
+	uint8_t i;
+	for (i = 0 ; i < KEYS_ROLLOVER ; i++) {
+		_keyReport.keys[i] = 0x00;
+	}
 	_keyReport.modifiers = 0;
 	sendReport(&_keyReport);
 }
