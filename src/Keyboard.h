@@ -83,7 +83,6 @@ class Keyboard_ : public Print
 {
 private:
   KeyReport _keyReport;
-  void sendReport(KeyReport* keys);
 public:
   Keyboard_(void);
   void begin(void);
@@ -91,6 +90,7 @@ public:
   size_t write(uint8_t k);
   size_t press(uint8_t k);
   size_t release(uint8_t k);
+  void sendReport(KeyReport* keys);
   void releaseAll(void);
 };
 extern Keyboard_ Keyboard;
