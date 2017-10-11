@@ -51,11 +51,11 @@ static const uint8_t _hidReportDescriptor[] PROGMEM = {
   0x95, 0x06,                    //   REPORT_COUNT (6)
     0x75, 0x08,                    //   REPORT_SIZE (8)
     0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
-    0x25, 0x65,                    //   LOGICAL_MAXIMUM (101)
+    0x25, 0x73,                    //   LOGICAL_MAXIMUM (115)
     0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
     
   0x19, 0x00,                    //   USAGE_MINIMUM (Reserved (no event indicated))
-    0x29, 0x65,                    //   USAGE_MAXIMUM (Keyboard Application)
+    0x29, 0x73,                    //   USAGE_MAXIMUM (Keyboard Application)
     0x81, 0x00,                    //   INPUT (Data,Ary,Abs)
     0xc0,                          // END_COLLECTION
 };
@@ -320,3 +320,4 @@ size_t Keyboard_::write(uint8_t c)
 Keyboard_ Keyboard;
 
 #endif
+
