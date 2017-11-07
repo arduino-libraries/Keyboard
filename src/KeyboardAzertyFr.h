@@ -1,5 +1,5 @@
 /*
-  Keyboard.h
+  KeyboardAzertyFr.h
 
   Copyright (c) 2015, Arduino LLC
   Original code (pre-library): Copyright (c) 2011, Peter Barrett
@@ -19,8 +19,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef KEYBOARD_h
-#define KEYBOARD_h
+#ifndef KEYBOARDAZERTYFR_h
+#define KEYBOARDAZERTYFR_h
 
 #include "HID.h"
 
@@ -92,13 +92,13 @@ typedef struct
   uint8_t keys[6];
 } KeyReport;
 
-class Keyboard_ : public Print
+class KeyboardAzertyFr_ : public Print
 {
 private:
   KeyReport _keyReport;
   void sendReport(KeyReport* keys);
 public:
-  Keyboard_(void);
+  KeyboardAzertyFr_(void);
   void begin(void);
   void end(void);
   size_t write(uint8_t k);
@@ -106,8 +106,7 @@ public:
   size_t release(uint8_t k);
   void releaseAll(void);
 };
-extern Keyboard_ Keyboard;
+extern KeyboardAzertyFr_ KeyboardAzertyFr;
 
 #endif
 #endif
-

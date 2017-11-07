@@ -1,12 +1,12 @@
 #######################################
-# Syntax Coloring Map For Keyboard
+# Syntax Coloring Map For KeyboardAzertyFr
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
 
-Keyboard	KEYWORD1
+KeyboardAzertyFr	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -21,4 +21,3 @@ releaseAll	KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################
-
