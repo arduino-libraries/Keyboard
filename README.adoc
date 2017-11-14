@@ -1,10 +1,10 @@
 = Keyboard Library for Arduino =
 
-This library allows an Arduino board with USB capabilites to act as a Keyboard.
+This library allows an Arduino board with USB capabilities to act as a Keyboard.
 Being based on HID library you need to include "HID.h" in your sketch.
 
 For more information about this library please visit us at
-http://www.arduino.cc/en/Reference/Keyboard
+https://www.arduino.cc/reference/en/language/functions/usb/keyboard/
 
 == License ==
 
