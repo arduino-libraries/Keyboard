@@ -313,7 +313,8 @@ void Keyboard_::releaseAll(void)
 size_t Keyboard_::write(uint8_t c)
 {
 	if (c == '\r') {
-		return c;
+		// ignore it
+		return 0;
 	}
 	if (c == '\n') {
 		c = KEY_RETURN;
