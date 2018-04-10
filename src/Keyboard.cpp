@@ -313,11 +313,8 @@ void Keyboard_::releaseAll(void)
 size_t Keyboard_::write(uint8_t c)
 {
 	if (c == '\r') {
-		// ignore it
-		return 0;
-	}
-	if (c == '\n') {
-		c = KEY_RETURN;
+		// successfully ignore it
+		return 1;
 	}
 	uint8_t p = press(c);  // Keydown
 	release(c);            // Keyup
