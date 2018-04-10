@@ -312,16 +312,24 @@ void Keyboard_::releaseAll(void)
 
 size_t Keyboard_::write(uint8_t c)
 {
-	if (c == '\r') {
-		// ignore it
-		return 0;
-	}
-	if (c == '\n') {
-		c = KEY_RETURN;
-	}
 	uint8_t p = press(c);  // Keydown
 	release(c);            // Keyup
 	return p;              // just return the result of press() since release() almost always returns 1
+}
+
+size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
+	size_t n = 0;
+	while (size--) {
+		if (*buffer != '\r') {
+			if (write(*buffer)) {
+			  n++;
+			} else {
+			  break;
+			}
+		}
+		buffer++;
+	}
+	return n;
 }
 
 Keyboard_ Keyboard;
