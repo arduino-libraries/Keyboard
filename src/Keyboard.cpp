@@ -25,11 +25,11 @@
 
 //================================================================================
 //================================================================================
-//	Keyboard
+//  Keyboard
 
 static const uint8_t _hidReportDescriptor[] PROGMEM = {
 
-  //  Keyboard
+    //  Keyboard
     0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)  // 47
     0x09, 0x06,                    // USAGE (Keyboard)
     0xa1, 0x01,                    // COLLECTION (Application)
@@ -93,9 +93,9 @@ const uint8_t _asciimap[128] =
 	0x00,             // ENQ
 	0x00,             // ACK
 	0x00,             // BEL
-	0x2a,          // BS	Backspace
-	0x2b,          // TAB	Tab
-	0x28,          // LF	Enter
+	0x2a,          // BS  Backspace
+	0x2b,          // TAB Tab
+	0x28,          // LF  Enter
 	0x00,             // VT
 	0x00,             // FF
 	0x00,             // CR
@@ -118,7 +118,7 @@ const uint8_t _asciimap[128] =
 	0x00,             // RS
 	0x00,             // US
 
-	0x2c,          //  ' '
+	0x2c,          // ' '
 	0x1e|SHIFT,    // !
 	0x34|SHIFT,    // "
 	0x20|SHIFT,    // #
