@@ -36,25 +36,25 @@ static const uint8_t _hidReportDescriptor[] PROGMEM = {
     0x85, 0x02,                    //   REPORT_ID (2)
     0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
    
-  0x19, 0xe0,                    //   USAGE_MINIMUM (Keyboard LeftControl)
+    0x19, 0xe0,                    //   USAGE_MINIMUM (Keyboard LeftControl)
     0x29, 0xe7,                    //   USAGE_MAXIMUM (Keyboard Right GUI)
     0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
     0x25, 0x01,                    //   LOGICAL_MAXIMUM (1)
     0x75, 0x01,                    //   REPORT_SIZE (1)
     
-  0x95, 0x08,                    //   REPORT_COUNT (8)
+    0x95, 0x08,                    //   REPORT_COUNT (8)
     0x81, 0x02,                    //   INPUT (Data,Var,Abs)
     0x95, 0x01,                    //   REPORT_COUNT (1)
     0x75, 0x08,                    //   REPORT_SIZE (8)
     0x81, 0x03,                    //   INPUT (Cnst,Var,Abs)
     
-  0x95, 0x06,                    //   REPORT_COUNT (6)
+    0x95, 0x06,                    //   REPORT_COUNT (6)
     0x75, 0x08,                    //   REPORT_SIZE (8)
     0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
     0x25, 0x73,                    //   LOGICAL_MAXIMUM (115)
     0x05, 0x07,                    //   USAGE_PAGE (Keyboard)
     
-  0x19, 0x00,                    //   USAGE_MINIMUM (Reserved (no event indicated))
+    0x19, 0x00,                    //   USAGE_MINIMUM (Reserved (no event indicated))
     0x29, 0x73,                    //   USAGE_MAXIMUM (Keyboard Application)
     0x81, 0x00,                    //   INPUT (Data,Ary,Abs)
     0xc0,                          // END_COLLECTION
@@ -93,9 +93,9 @@ const uint8_t _asciimap[128] =
 	0x00,             // ENQ
 	0x00,             // ACK  
 	0x00,             // BEL
-	0x2a,			// BS	Backspace
-	0x2b,			// TAB	Tab
-	0x28,			// LF	Enter
+	0x2a,          // BS	Backspace
+	0x2b,          // TAB	Tab
+	0x28,          // LF	Enter
 	0x00,             // VT 
 	0x00,             // FF 
 	0x00,             // CR 
@@ -118,9 +118,9 @@ const uint8_t _asciimap[128] =
 	0x00,             // RS 
 	0x00,             // US 
 
-	0x2c,		   //  ' '
-	0x1e|SHIFT,	   // !
-	0x34|SHIFT,	   // "
+	0x2c,          //  ' '
+	0x1e|SHIFT,    // !
+	0x34|SHIFT,    // "
 	0x20|SHIFT,    // #
 	0x21|SHIFT,    // $
 	0x22|SHIFT,    // %
@@ -144,39 +144,39 @@ const uint8_t _asciimap[128] =
 	0x24,          // 7
 	0x25,          // 8
 	0x26,          // 9
-	0x33|SHIFT,      // :
+	0x33|SHIFT,    // :
 	0x33,          // ;
-	0x36|SHIFT,      // <
+	0x36|SHIFT,    // <
 	0x2e,          // =
-	0x37|SHIFT,      // >
-	0x38|SHIFT,      // ?
-	0x1f|SHIFT,      // @
-	0x04|SHIFT,      // A
-	0x05|SHIFT,      // B
-	0x06|SHIFT,      // C
-	0x07|SHIFT,      // D
-	0x08|SHIFT,      // E
-	0x09|SHIFT,      // F
-	0x0a|SHIFT,      // G
-	0x0b|SHIFT,      // H
-	0x0c|SHIFT,      // I
-	0x0d|SHIFT,      // J
-	0x0e|SHIFT,      // K
-	0x0f|SHIFT,      // L
-	0x10|SHIFT,      // M
-	0x11|SHIFT,      // N
-	0x12|SHIFT,      // O
-	0x13|SHIFT,      // P
-	0x14|SHIFT,      // Q
-	0x15|SHIFT,      // R
-	0x16|SHIFT,      // S
-	0x17|SHIFT,      // T
-	0x18|SHIFT,      // U
-	0x19|SHIFT,      // V
-	0x1a|SHIFT,      // W
-	0x1b|SHIFT,      // X
-	0x1c|SHIFT,      // Y
-	0x1d|SHIFT,      // Z
+	0x37|SHIFT,    // >
+	0x38|SHIFT,    // ?
+	0x1f|SHIFT,    // @
+	0x04|SHIFT,    // A
+	0x05|SHIFT,    // B
+	0x06|SHIFT,    // C
+	0x07|SHIFT,    // D
+	0x08|SHIFT,    // E
+	0x09|SHIFT,    // F
+	0x0a|SHIFT,    // G
+	0x0b|SHIFT,    // H
+	0x0c|SHIFT,    // I
+	0x0d|SHIFT,    // J
+	0x0e|SHIFT,    // K
+	0x0f|SHIFT,    // L
+	0x10|SHIFT,    // M
+	0x11|SHIFT,    // N
+	0x12|SHIFT,    // O
+	0x13|SHIFT,    // P
+	0x14|SHIFT,    // Q
+	0x15|SHIFT,    // R
+	0x16|SHIFT,    // S
+	0x17|SHIFT,    // T
+	0x18|SHIFT,    // U
+	0x19|SHIFT,    // V
+	0x1a|SHIFT,    // W
+	0x1b|SHIFT,    // X
+	0x1c|SHIFT,    // Y
+	0x1d|SHIFT,    // Z
 	0x2f,          // [
 	0x31,          // bslash
 	0x30,          // ]
@@ -213,7 +213,7 @@ const uint8_t _asciimap[128] =
 	0x31|SHIFT,    // |
 	0x30|SHIFT,    // }
 	0x35|SHIFT,    // ~
-	0				// DEL
+	0x00              // DEL
 };
 
 
@@ -242,7 +242,7 @@ size_t Keyboard_::press(uint8_t k)
 			k &= 0x7F;
 		}
 	}
-	
+
 	// Add k to the key report only if it's not already present
 	// and if there is an empty slot.
 	if (_keyReport.keys[0] != k && _keyReport.keys[1] != k && 
@@ -285,7 +285,7 @@ size_t Keyboard_::release(uint8_t k)
 			k &= 0x7F;
 		}
 	}
-	
+
 	// Test the key report to see if k is present.  Clear it if it exists.
 	// Check all positions in case the key is present more than once (which it shouldn't be)
 	for (i=0; i<6; i++) {
