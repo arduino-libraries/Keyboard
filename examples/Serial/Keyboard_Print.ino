@@ -13,7 +13,7 @@ void setup() {
 void loop() {
   //if the button is pressed
   if (digitalRead(2) == LOW) {
-    //Send an ASCII 'A',
-    Keyboard.write(65);
+    //Send the message
+    Keyboard.print("Hello!");
   }
 }
