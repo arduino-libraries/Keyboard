@@ -1,4 +1,9 @@
 /*
+  This example has been moved to File > Examples > USB > KeyboardAndMouseControl
+  https://github.com/arduino/Arduino/tree/master/build/shared/examples/09.USB/KeyboardAndMouseControl
+*/
+
+/*
   KeyboardAndMouseControl
 
   Controls the mouse from five pushbuttons on a native USB board (e.g., Leonardo,
