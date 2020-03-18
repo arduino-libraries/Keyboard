@@ -32,7 +32,7 @@ void setup() {
 }
 
 // Place the actions needed after pin press here
-int outputAction(int currentButton) {
+void outputAction(int currentButton) {
     if (currentButton == 1) {
       Keyboard.press(ctrlKey);
       Keyboard.press('c');
