@@ -40,8 +40,8 @@ void outputAction(int currentButton) {
       delay(100);
       Keyboard.releaseAll();
     }
-    if (currentButton + 1 == 2) {
-      Keyboard.press(ctrlKey);
+    else if (currentButton == 2) {
+      Keyboard.press(KEY_LEFT_CTRL);
       Keyboard.press('v');
       delay(100);
       Keyboard.releaseAll();
