@@ -18,7 +18,7 @@
 
 const int btnPin[] = {2, 3, 4, 5};
 int pincount = 4;
-int btnState[] = {0, 0, 0, 0};
+int btnState[pincount];
 int prevbtnState[] = {HIGH, HIGH, HIGH, HIGH};
 
 unsigned long lastDebounceTime[] = {0, 0, 0, 0};
