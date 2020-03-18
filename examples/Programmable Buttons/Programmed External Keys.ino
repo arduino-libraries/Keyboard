@@ -47,6 +47,7 @@ void outputAction(int currentButton) {
       Keyboard.releaseAll();
     }
 }
+
 void loop() {
   for (int thisPin = pincount - 1; thisPin >= 0; thisPin--) {
     btnState[thisPin] = digitalRead(btnPin[thisPin]);
