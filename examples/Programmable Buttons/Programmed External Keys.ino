@@ -1,26 +1,20 @@
 /*
   Programmed External Keys (Keyboard)
   
-  For the Arduino Leonardo/any other arduino board with usb interface
+  For native USB Arduino boards (e.g., Leonardo, Micro, MKR, Nano 33 IoT, Zero, Due)
   
-  Reads a key from push button & acts as a CTRL+C (Copy).
-  Reads another key from push button & acts as a CTRL+V (Paste).
+  When the first button is pressed, the Ctrl + C keyboard shortcut (copy) is emulated.
+  When the second button is pressed, the Ctrl + V keyboard shortcut (paste) is emulated.
   
-
   The circuit:
-  
-  The push button has 2 connectors. 
-  We must connect gnd and the second will be connected to any I/O pin. 
-
-connect register between (button & gnd)& then set pinMode() as INPUT.
+  The push buttons have 2 connectors. 
+  Connect one to GND and the other to the I/O pin defined in the btnPin array.
 
   created 18 March 2020
-  
   by Prathamesh Sahasrabhojane (TheShubham99)
-
 */
 
-#include "Keyboard.h"
+#include <Keyboard.h>
 
 const int btnPin[] = {2, 3, 4, 5};
 int pincount = 4;
