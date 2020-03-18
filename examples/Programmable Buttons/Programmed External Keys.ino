@@ -26,8 +26,7 @@ unsigned long debounceDelay = 50;
 
 void setup() {
   for (int thisPin = pincount - 1; thisPin >= 0; thisPin--) {
-    pinMode(btnPin[thisPin], INPUT);
-    digitalWrite(btnPin[thisPin], HIGH);
+    pinMode(btnPin[thisPin], INPUT_PULLUP);
   }
   Keyboard.begin();
 }
