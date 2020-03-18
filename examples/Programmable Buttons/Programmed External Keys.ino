@@ -23,6 +23,7 @@ int prevbtnState[] = {HIGH, HIGH, HIGH, HIGH};
 
 unsigned long lastDebounceTime[] = {0, 0, 0, 0};
 unsigned long debounceDelay = 50;
+
 void setup() {
   for (int thisPin = pincount - 1; thisPin >= 0; thisPin--) {
     pinMode(btnPin[thisPin], INPUT);
