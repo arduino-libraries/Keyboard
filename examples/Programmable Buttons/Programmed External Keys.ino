@@ -34,7 +34,7 @@ void setup() {
 // Place the actions needed after pin press here
 void outputAction(int currentButton) {
     if (currentButton == 1) {
-      Keyboard.press(ctrlKey);
+      Keyboard.press(KEY_LEFT_CTRL);
       Keyboard.press('c');
       delay(100);
       Keyboard.releaseAll();
