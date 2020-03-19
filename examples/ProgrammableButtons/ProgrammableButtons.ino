@@ -17,15 +17,15 @@
 #include <Keyboard.h>
 
 const int btnPin[] = {2, 3};
-const int pincount = 2;
-int btnState[pincount];
+const int pinCount = 2;
+int btnState[pinCount];
 int prevBtnState[] = {HIGH, HIGH};
 
 unsigned long lastDebounceTime[] = {0, 0};
 unsigned long debounceDelay = 50;
 
 void setup() {
-  for (int thisPin = pincount - 1; thisPin >= 0; thisPin--) {
+  for (int thisPin = pinCount - 1; thisPin >= 0; thisPin--) {
     pinMode(btnPin[thisPin], INPUT_PULLUP);
   }
   Keyboard.begin();
@@ -33,13 +33,13 @@ void setup() {
 
 // Place the actions needed after pin press here
 void outputAction(int currentButton) {
-  if (currentButton == 1) {
+  if (currentButton == 0) {
     Keyboard.press(KEY_LEFT_CTRL);
     Keyboard.press('c');
     delay(100);
     Keyboard.releaseAll();
   }
-  else if (currentButton == 2) {
+  else if (currentButton == 1) {
     Keyboard.press(KEY_LEFT_CTRL);
     Keyboard.press('v');
     delay(100);
@@ -48,7 +48,7 @@ void outputAction(int currentButton) {
 }
 
 void loop() {
-  for (int thisPin = pincount - 1; thisPin >= 0; thisPin--) {
+  for (int thisPin = pinCount - 1; thisPin >= 0; thisPin--) {
     btnState[thisPin] = digitalRead(btnPin[thisPin]);
 
     if ((btnState[thisPin] != prevBtnState[thisPin]) && (btnState[thisPin] == LOW)) {
