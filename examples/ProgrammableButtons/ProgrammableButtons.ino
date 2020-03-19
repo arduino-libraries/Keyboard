@@ -16,12 +16,12 @@
 
 #include <Keyboard.h>
 
-const int btnPin[] = {2, 3, 4, 5};
-int pincount = 2;
+const int btnPin[] = {2, 3};
+const int pincount = 2;
 int btnState[pincount];
-int prevBtnState[] = {HIGH, HIGH, HIGH, HIGH};
+int prevBtnState[] = {HIGH, HIGH};
 
-unsigned long lastDebounceTime[] = {0, 0, 0, 0};
+unsigned long lastDebounceTime[] = {0, 0};
 unsigned long debounceDelay = 50;
 
 void setup() {
@@ -61,3 +61,4 @@ void loop() {
     prevBtnState[thisPin] = btnState[thisPin];
   }
 }
+
