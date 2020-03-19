@@ -19,7 +19,7 @@
 const int btnPin[] = {2, 3};
 const int pinCount = 2;
 int btnState[pinCount];
-int prevBtnState[] = {HIGH, HIGH};
+int prevBtnState[] = {HIGH, HIGH}; 
 
 unsigned long lastDebounceTime[] = {0, 0};
 unsigned long debounceDelay = 50;
@@ -51,7 +51,7 @@ void loop() {
   for (int thisPin = pinCount - 1; thisPin >= 0; thisPin--) {
     btnState[thisPin] = digitalRead(btnPin[thisPin]);
 
-    if ((btnState[thisPin] != prevBtnState[thisPin]) && (btnState[thisPin] == LOW)) {
+    if ((btnState[thisPin] != prevBtnState[thisPin]) && (btnState[thisPin] == HIGH)) {
       if ((millis() - lastDebounceTime[thisPin]) > debounceDelay) {
         outputAction(thisPin);
         lastDebounceTime[thisPin] = millis();
