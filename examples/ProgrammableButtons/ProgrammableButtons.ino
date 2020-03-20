@@ -32,7 +32,7 @@ void setup() {
 }
 
 // Place the actions needed after pin press here
-void outputAction(int currentButton) {
+void outputAction(const int currentButton) {
   if (currentButton == 0) {
     Keyboard.press(KEY_LEFT_CTRL);
     Keyboard.press('c');
@@ -61,4 +61,3 @@ void loop() {
     prevBtnState[thisPin] = btnState[thisPin];
   }
 }
-
