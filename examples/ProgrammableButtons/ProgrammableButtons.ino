@@ -51,7 +51,7 @@ void loop() {
   for (int thisPin = pinCount - 1; thisPin >= 0; thisPin--) {
     btnState[thisPin] = digitalRead(btnPin[thisPin]);
 
-    if ((btnState[thisPin] != prevBtnState[thisPin]) && (btnState[thisPin] == HIGH)) {
+    if ((btnState[thisPin] != prevBtnState[thisPin]) && (btnState[thisPin] == LOW)) {
       if ((millis() - lastDebounceTime[thisPin]) > debounceDelay) {
         outputAction(thisPin);
         lastDebounceTime[thisPin] = millis();
