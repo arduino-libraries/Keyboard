@@ -22,7 +22,7 @@ int btnState[pinCount];
 int prevBtnState[] = {HIGH, HIGH}; 
 
 unsigned long lastDebounceTime[] = {0, 0};
-unsigned long debounceDelay = 50;
+const unsigned long debounceDelay = 50;
 
 void setup() {
   for (int thisPin = pinCount - 1; thisPin >= 0; thisPin--) {
