@@ -1,23 +1,23 @@
 /*
-  Keyboard.cpp
+Keyboard.cpp
 
-  Copyright (c) 2015, Arduino LLC
-  Original code (pre-library): Copyright (c) 2011, Peter Barrett
-  Contributor: MRNIU
-  
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
+Copyright (c) 2015, Arduino LLC
+Original code (pre-library): Copyright (c) 2011, Peter Barrett
+Contributor: MRNIU
 
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  Lesser General Public License for more details.
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
 
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 #include "Keyboard.h"
@@ -29,44 +29,44 @@
 //	Keyboard
 
 static const uint8_t _hidReportDescriptor[] PROGMEM = {
-    //  Keyboard
-    0x05, 0x01,                      /* USAGE_PAGE (Generic Desktop)	  47 */
-    0x09, 0x06,                      /* USAGE (Keyboard) */
-    0xa1, 0x01,                      /* COLLECTION (Application) */
-    0x85, HID_REPORTID_KEYBOARD,	 /*   REPORT_ID TODO order important? */
-    0x05, 0x07,                      /*   USAGE_PAGE (Keyboard) */
+	//  Keyboard
+	0x05, 0x01,						/* USAGE_PAGE (Generic Desktop)	  47 */
+	0x09, 0x06,						/* USAGE (Keyboard) */
+	0xa1, 0x01,						/* COLLECTION (Application) */
+	0x85, HID_REPORTID_KEYBOARD,	/*   REPORT_ID TODO order important? */
+	0x05, 0x07,						/*   USAGE_PAGE (Keyboard) */
 
-    /* Keyboard Modifiers (shift, alt, ...) */
-    0x19, 0xe0,                      /*   USAGE_MINIMUM (Keyboard LeftControl) */
-    0x29, 0xe7,                      /*   USAGE_MAXIMUM (Keyboard Right GUI) */
-    0x15, 0x00,                      /*   LOGICAL_MINIMUM (0) */
-    0x25, 0x01,                      /*   LOGICAL_MAXIMUM (1) */
-    0x75, 0x01,                      /*   REPORT_SIZE (1) */
-	0x95, 0x08,                      /*   REPORT_COUNT (8) */
-    0x81, 0x02,                      /*   INPUT (Data,Var,Abs) */
+	/* Keyboard Modifiers (shift, alt, ...) */
+	0x19, 0xe0,						/*   USAGE_MINIMUM (Keyboard LeftControl) */
+	0x29, 0xe7,						/*   USAGE_MAXIMUM (Keyboard Right GUI) */
+	0x15, 0x00,						/*   LOGICAL_MINIMUM (0) */
+	0x25, 0x01,						/*   LOGICAL_MAXIMUM (1) */
+	0x75, 0x01,						/*   REPORT_SIZE (1) */
+	0x95, 0x08,						/*   REPORT_COUNT (8) */
+	0x81, 0x02,						/*   INPUT (Data,Var,Abs) */
 
-    /* Reserved byte, used for consumer reports, only works with linux */
-	0x05, 0x0C,             		 /*   Usage Page (Consumer) */
-    0x95, 0x01,                      /*   REPORT_COUNT (1) */
-    0x75, 0x08,                      /*   REPORT_SIZE (8) */
-    0x15, 0x00,                      /*   LOGICAL_MINIMUM (0) */
-    0x26, 0xFF, 0x00,                /*   LOGICAL_MAXIMUM (255) */
-    0x19, 0x00,                      /*   USAGE_MINIMUM (0) */
-    0x29, 0xFF,                      /*   USAGE_MAXIMUM (255) */
-    0x81, 0x00,                      /*   INPUT (Data,Ary,Abs) */
+	/* Reserved byte, used for consumer reports, only works with linux */
+	0x05, 0x0C,						/*   Usage Page (Consumer) */
+	0x95, 0x01,						/*   REPORT_COUNT (1) */
+	0x75, 0x08,						/*   REPORT_SIZE (8) */
+	0x15, 0x00,						/*   LOGICAL_MINIMUM (0) */
+	0x26, 0xFF, 0x00,				/*   LOGICAL_MAXIMUM (255) */
+	0x19, 0x00,						/*   USAGE_MINIMUM (0) */
+	0x29, 0xFF,						/*   USAGE_MAXIMUM (255) */
+	0x81, 0x00,						/*   INPUT (Data,Ary,Abs) */
 
-    /* 6 Keyboard keys */
-    0x05, 0x07,                      /*   USAGE_PAGE (Keyboard) */
-    0x95, 0x06,                      /*   REPORT_COUNT (6) */
-    0x75, 0x08,                      /*   REPORT_SIZE (8) */
-    0x15, 0x00,                      /*   LOGICAL_MINIMUM (0) */
-    0x26, 0xE7, 0x00,                /*   LOGICAL_MAXIMUM (231) */
-    0x19, 0x00,                      /*   USAGE_MINIMUM (Reserved (no event indicated)) */
-    0x29, 0xE7,                      /*   USAGE_MAXIMUM (Keyboard Right GUI) */
-    0x81, 0x00,                      /*   INPUT (Data,Ary,Abs) */
+	/* 6 Keyboard keys */
+	0x05, 0x07,						/*   USAGE_PAGE (Keyboard) */
+	0x95, 0x06,						/*   REPORT_COUNT (6) */
+	0x75, 0x08,						/*   REPORT_SIZE (8) */
+	0x15, 0x00,						/*   LOGICAL_MINIMUM (0) */
+	0x26, 0xE7, 0x00,				/*   LOGICAL_MAXIMUM (231) */
+	0x19, 0x00,						/*   USAGE_MINIMUM (Reserved (no event indicated)) */
+	0x29, 0xE7,						/*   USAGE_MAXIMUM (Keyboard Right GUI) */
+	0x81, 0x00,						/*   INPUT (Data,Ary,Abs) */
 
-    /* End */
-    0xc0                            /* END_COLLECTION */
+	/* End */
+	0xc0							/* END_COLLECTION */
 };
 
 Keyboard_::Keyboard_(void)
@@ -159,14 +159,14 @@ uint8_t USBPutChar(uint8_t c);
 // call release(), releaseAll(), or otherwise clear the report and resend.
 size_t Keyboard_::press(uint8_t k)
 {
-    // Press key and send report to host
-    uint8_t i;
+	// Press key and send report to host
+	uint8_t i;
 	auto ret = set((KeyboardKeycode)k, true);
 	if(ret){
-    	sendReport(&_keyReport);
-        return 1;
+		sendReport(&_keyReport);
+		return 1;
 	}
-    return 0;
+	return 0;
 }
 
 // release() takes the specified key out of the persistent key report and
@@ -174,11 +174,11 @@ size_t Keyboard_::press(uint8_t k)
 // it shouldn't be repeated any more.
 size_t Keyboard_::release(uint8_t k)
 {
-    uint8_t i;
+	uint8_t i;
 	auto ret = set((KeyboardKeycode)k, false);
-    if(ret){
-    	sendReport(&_keyReport);
-        return 1;
+	if(ret){
+		sendReport(&_keyReport);
+		return 1;
 	}
 	return 0;
 }
@@ -197,9 +197,9 @@ void Keyboard_::releaseAll(void)
 
 size_t Keyboard_::write(uint8_t c)
 {
-	uint8_t p = press(c);  // Keydown
-	release(c);            // Keyup
-	return p;              // just return the result of press() since release() almost always returns 1
+	uint8_t p = press(c);	// Keydown
+	release(c);				// Keyup
+	return p;				// just return the result of press() since release() almost always returns 1
 }
 
 size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
@@ -207,9 +207,9 @@ size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
 	while (size--) {
 		if (*buffer != '\r') {
 			if (write(*buffer)) {
-			  n++;
+				n++;
 			} else {
-			  break;
+				break;
 			}
 		}
 		buffer++;
