@@ -103,7 +103,7 @@ size_t Keyboard_::set(KeyboardKeycode k, bool s)
 		}
 		return 1;
 	}
-	// Its a normal key
+	// It's a normal key
 	else{
 		// get size of keycodes during compile time
 		const uint8_t keycodesSize = sizeof(_keyReport.keycodes);
