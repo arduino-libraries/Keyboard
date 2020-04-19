@@ -25,6 +25,10 @@
 
 #include "HID.h"
 
+#ifndef HID_REPORTID_KEYBOARD
+#define HID_REPORTID_KEYBOARD 2
+#endif
+
 #if !defined(_USING_HID)
 
 #warning "Using legacy HID core (non pluggable)"
