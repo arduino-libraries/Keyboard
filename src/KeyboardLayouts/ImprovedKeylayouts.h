@@ -26,38 +26,38 @@ THE SOFTWARE.
 
 // Keyboard Modifiers
 enum KeyboardMods : uint16_t {
-	MOD_LEFT_CTRL		= (1 <<  8),
-	MOD_LEFT_SHIFT		= (1 <<  9),
-	MOD_LEFT_ALT		= (1 << 10),
-	MOD_LEFT_GUI		= (1 << 11),
-	MOD_RIGHT_CTRL		= (1 << 12),
-	MOD_RIGHT_SHIFT		= (1 << 13),
-	MOD_RIGHT_ALT		= (1 << 14),
-	MOD_RIGHT_GUI		= (uint16_t)(1 << 15),
+    MOD_LEFT_CTRL        = (1 <<  8),
+    MOD_LEFT_SHIFT       = (1 <<  9),
+    MOD_LEFT_ALT         = (1 << 10),
+    MOD_LEFT_GUI         = (1 << 11),
+    MOD_RIGHT_CTRL       = (1 << 12),
+    MOD_RIGHT_SHIFT      = (1 << 13),
+    MOD_RIGHT_ALT        = (1 << 14),
+    MOD_RIGHT_GUI        = (uint16_t)(1 << 15),
 };
 
 // Keyboard Leds
 enum KeyboardLeds : uint8_t {
-	LED_NUM_LOCK		= (1 << 0),
-	LED_CAPS_LOCK		= (1 << 1),
-	LED_SCROLL_LOCK		= (1 << 2),
-	LED_COMPOSE			= (1 << 3),
-	LED_KANA			= (1 << 4),
-	LED_POWER			= (1 << 5),
-	LED_SHIFT			= (1 << 6),
-	LED_DO_NOT_DISTURB	= (1 << 7),
+    LED_NUM_LOCK         = (1 << 0),
+    LED_CAPS_LOCK        = (1 << 1),
+    LED_SCROLL_LOCK      = (1 << 2),
+    LED_COMPOSE          = (1 << 3),
+    LED_KANA             = (1 << 4),
+    LED_POWER            = (1 << 5),
+    LED_SHIFT            = (1 << 6),
+    LED_DO_NOT_DISTURB   = (1 << 7),
 };
 
 #ifndef HID_CUSTOM_LAYOUT
-	#define HID_CUSTOM_LAYOUT
-	#define LAYOUT_US_ENGLISH
-	#pragma message "Using default ASCII layout for keyboard modules"
+    #define HID_CUSTOM_LAYOUT
+    #define LAYOUT_US_ENGLISH
+    #pragma message "Using default ASCII layout for keyboard modules"
 #else
-	#pragma message "Using custom layout for keyboard modules"
+    #pragma message "Using custom layout for keyboard modules"
 #endif
 
 #if defined(LAYOUT_US_ENGLISH)
-	#include "ImprovedKeylayoutsUS.h"
+    #include "ImprovedKeylayoutsUS.h"
 #elif defined(LAYOUT_CANADIAN_FRENCH)
 #elif defined(LAYOUT_CANADIAN_MULTILINGUAL)
 #elif defined(LAYOUT_DANISH)
@@ -66,7 +66,7 @@ enum KeyboardLeds : uint8_t {
 #elif defined(LAYOUT_FRENCH_BELGIAN)
 #elif defined(LAYOUT_FRENCH_SWISS)
 #elif defined(LAYOUT_GERMAN)
-	#include "ImprovedKeylayoutsDE.h"
+    #include "ImprovedKeylayoutsDE.h"
 #elif defined(LAYOUT_GERMAN_MAC)
 #elif defined(LAYOUT_GERMAN_SWISS)
 #elif defined(LAYOUT_ICELANDIC)
