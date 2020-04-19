@@ -49,15 +49,15 @@ enum KeyboardLeds : uint8_t {
 };
 
 #ifndef HID_CUSTOM_LAYOUT
-    #define HID_CUSTOM_LAYOUT
-    #define LAYOUT_US_ENGLISH
-    #pragma message "Using default ASCII layout for keyboard modules"
+#define HID_CUSTOM_LAYOUT
+#define LAYOUT_US_ENGLISH
+#pragma message "Using default ASCII layout for keyboard modules"
 #else
-    #pragma message "Using custom layout for keyboard modules"
+#pragma message "Using custom layout for keyboard modules"
 #endif
 
 #if defined(LAYOUT_US_ENGLISH)
-    #include "ImprovedKeylayoutsUS.h"
+#include "ImprovedKeylayoutsUS.h"
 #elif defined(LAYOUT_CANADIAN_FRENCH)
 #elif defined(LAYOUT_CANADIAN_MULTILINGUAL)
 #elif defined(LAYOUT_DANISH)
