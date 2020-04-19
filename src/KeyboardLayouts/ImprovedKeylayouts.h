@@ -51,9 +51,6 @@ enum KeyboardLeds : uint8_t {
 #ifndef HID_CUSTOM_LAYOUT
 #define HID_CUSTOM_LAYOUT
 #define LAYOUT_US_ENGLISH
-#pragma message "Using default ASCII layout for keyboard modules"
-#else
-#pragma message "Using custom layout for keyboard modules"
 #endif
 
 #if defined(LAYOUT_US_ENGLISH)
