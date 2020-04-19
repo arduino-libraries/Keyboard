@@ -160,7 +160,6 @@ uint8_t USBPutChar(uint8_t c);
 size_t Keyboard_::press(uint8_t k)
 {
 	// Press key and send report to host
-	uint8_t i;
 	auto ret = set((KeyboardKeycode)k, true);
 	if(ret){
 		sendReport(&_keyReport);
@@ -174,7 +173,6 @@ size_t Keyboard_::press(uint8_t k)
 // it shouldn't be repeated any more.
 size_t Keyboard_::release(uint8_t k)
 {
-	uint8_t i;
 	auto ret = set((KeyboardKeycode)k, false);
 	if(ret){
 		sendReport(&_keyReport);
