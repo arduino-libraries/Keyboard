@@ -1,8 +1,46 @@
 = Contributors =
 
-Original code (pre-library): NicoHood
+Original code (pre-library): [NicoHood/HID](https://github.com/NicoHood/HID)
 
-Contributor: MRNIU
+- Links/Credits
+
+    [LUFA from Dean Camera](http://www.fourwalledcubicle.com/LUFA.php)
+    [Darran's HID Projects] (https://github.com/harlequin-tech/arduino-usb)
+    [Connor's Joystick for the Leonardo](http://www.imaginaryindustries.com/blog/?p=80)
+    [Stefan Jones Multimedia Keys Example](http://stefanjones.ca/blog/arduino-leonardo-remote-multimedia-keys/)
+    [Athanasios Douitsis Multimedia Keys Example](https://github.com/aduitsis/ardumultimedia)
+    [The Original Arduino Sources](https://github.com/arduino/Arduino/tree/master/hardware/arduino/firmwares/atmegaxxu2/arduino-usbserial)
+    [USBlyzer](http://www.usblyzer.com/)
+    [Mattairtechs 16u2 Lufa USB Core](https://www.mattairtech.com/index.php/development-boards/mt-db-u1.html)
+    [Paul Brook's Minimus 32u2 Arduino USB Core](https://github.com/pbrook/minimus-arduino)
+    [Paul Stoffregen's Teensy Core](https://github.com/PaulStoffregen/cores)
+    [Keyboard Led Out report by hartmut_holgraefe](http://forum.arduino.cc/index.php?topic=173583.0)
+    [Github Pull Request with a lot of new functions](https://github.com/arduino/Arduino/pull/1803)
+    [Arduino ISP fix](https://petervanhoyweghen.wordpress.com/2012/09/16/arduinoisp-on-the-leonardo/)
+    A lot of searching through the web
+    The awesome official Arduino IRC chat!
+    [The NicoHood Protocol](https://github.com/NicoHood/NicoHoodProtocol)
+    See HoodLoader1&2 repository for more credits/links
+    [Hackaday post about HoodLoader2](hackaday.com/2014/11/30/using-the-second-microcontroller-on-an-arduino)
+    [Gamecube to PC adapter](https://github.com/NicoHood/Nintendo)
+
+- Projects
+
+    [Gamecube to PC Adapter](https://nicohood.wordpress.com/2015/02/10/diy-gamecube-to-usb-pc-adapter-with-arduino/)
+    [Car PC for Mercedes (german)](http://www.artifex-babel.de/de/car-pc/car-pc_de.html)
+    [Famicom+Genesis to PC Adapter](https://www.youtube.com/watch?v=Jz2oikvr8do)
+    [Plex Home Theatre IR remote](https://github.com/ep1cman/Plex-IR)
+    [The Knob](https://github.com/brainhublab/TheKnob)
+
+- Press
+
+    [Hackaday](http://hackaday.com/2014/11/30/using-the-second-microcontroller-on-an-arduino/)
+    [Atmel Blog](http://blog.atmel.com/2014/12/01/using-the-power-of-two-mcus-on-an-arduino-board/)
+
+See [NicoHood/HID/wiki/Useful-Links-Credits](https://github.com/NicoHood/HID/wiki/Useful-Links-Credits) for the latest information.
+
+- Contributor
+    [MRNIU](https://github.com/MRNIU)
 
 == License ==
 
