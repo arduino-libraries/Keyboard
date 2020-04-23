@@ -1,70 +1,48 @@
 = Contributors =
 
-Original code (pre-library): [NicoHood/HID](https://github.com/NicoHood/HID)
+Original code (pre-library): https://github.com/NicoHood/HID[NicoHood/HID]
 
-- Links/Credits
+* Links/Credits
 
-[LUFA from Dean Camera](http://www.fourwalledcubicle.com/LUFA.php)
+** http://www.fourwalledcubicle.com/LUFA.php[LUFA from Dean Camera]
 
-[Darran's HID Projects] (https://github.com/harlequin-tech/arduino-usb)
+** https://github.com/harlequin-tech/arduino-usb[Darran's HID Projects]
 
-[Connor's Joystick for the Leonardo](http://www.imaginaryindustries.com/blog/?p=80)
+** http://www.imaginaryindustries.com/blog/?p=80[Connor's Joystick for the Leonardo]
 
-[Stefan Jones Multimedia Keys Example](http://stefanjones.ca/blog/arduino-leonardo-remote-multimedia-keys/)
+** http://stefanjones.ca/blog/arduino-leonardo-remote-multimedia-keys/[Stefan Jones Multimedia Keys Example]
 
-[Athanasios Douitsis Multimedia Keys Example](https://github.com/aduitsis/ardumultimedia)
-    
-[The Original Arduino Sources](https://github.com/arduino/Arduino/tree/master/hardware/arduino/firmwares/atmegaxxu2/arduino-usbserial)
-    
-[USBlyzer](http://www.usblyzer.com/)
-    
-[Mattairtechs 16u2 Lufa USB Core](https://www.mattairtech.com/index.php/development-boards/mt-db-u1.html)
+** https://github.com/aduitsis/ardumultimedia[Athanasios Douitsis Multimedia Keys Example]
 
-[Paul Brook's Minimus 32u2 Arduino USB Core](https://github.com/pbrook/minimus-arduino)
+** https://github.com/arduino/Arduino/tree/master/hardware/arduino/firmwares/atmegaxxu2/arduino-usbserial[The Original Arduino Sources]
 
-[Paul Stoffregen's Teensy Core](https://github.com/PaulStoffregen/cores)
+** http://www.usblyzer.com/[USBlyzer]
 
-[Keyboard Led Out report by hartmut_holgraefe](http://forum.arduino.cc/index.php?topic=173583.0)
+** https://www.mattairtech.com/index.php/development-boards/mt-db-u1.html[Mattairtechs 16u2 Lufa USB Core]
 
-[Github Pull Request with a lot of new functions](https://github.com/arduino/Arduino/pull/1803)
+** https://github.com/pbrook/minimus-arduino[Paul Brook's Minimus 32u2 Arduino USB Core]
 
-[Arduino ISP fix](https://petervanhoyweghen.wordpress.com/2012/09/16/arduinoisp-on-the-leonardo/)
+** https://github.com/PaulStoffregen/cores[Paul Stoffregen's Teensy Core]
 
-A lot of searching through the web
+** http://forum.arduino.cc/index.php?topic=173583.0[Keyboard Led Out report by hartmut_holgraefe]
 
-The awesome official Arduino IRC chat!
+** https://github.com/arduino/Arduino/pull/1803[Github Pull Request with a lot of new functions]
 
-[The NicoHood Protocol](https://github.com/NicoHood/NicoHoodProtocol)
+** https://petervanhoyweghen.wordpress.com/2012/09/16/arduinoisp-on-the-leonardo/[Arduino ISP fix]
 
-See HoodLoader1&2 repository for more credits/links
+** A lot of searching through the web
 
-[Hackaday post about HoodLoader2](hackaday.com/2014/11/30/using-the-second-microcontroller-on-an-arduino)
+** The awesome official Arduino IRC chat!
 
-[Gamecube to PC adapter](https://github.com/NicoHood/Nintendo)
+** https://github.com/NicoHood/NicoHoodProtocol[The NicoHood Protocol]
 
-- Projects
+** See HoodLoader1&2 repository for more credits/links
 
-[Gamecube to PC Adapter](https://nicohood.wordpress.com/2015/02/10/diy-gamecube-to-usb-pc-adapter-with-arduino/)
+See https://github.com/NicoHood/HID/wiki/Useful-Links-Credits[NicoHood/HID/wiki/Useful-Links-Credits] for the whole information.
 
-[Car PC for Mercedes (german)](http://www.artifex-babel.de/de/car-pc/car-pc_de.html)
+* Contributor
 
-[Famicom+Genesis to PC Adapter](https://www.youtube.com/watch?v=Jz2oikvr8do)
-
-[Plex Home Theatre IR remote](https://github.com/ep1cman/Plex-IR)
-
-[The Knob](https://github.com/brainhublab/TheKnob)
-
-- Press
-
-[Hackaday](http://hackaday.com/2014/11/30/using-the-second-microcontroller-on-an-arduino/)
-
-[Atmel Blog](http://blog.atmel.com/2014/12/01/using-the-power-of-two-mcus-on-an-arduino-board/)
-
-
-See [NicoHood/HID/wiki/Useful-Links-Credits](https://github.com/NicoHood/HID/wiki/Useful-Links-Credits) for the latest information.
-
-- Contributor
-    [MRNIU](https://github.com/MRNIU)
+** https://github.com/MRNIU[MRNIU]
 
 == License ==
 
