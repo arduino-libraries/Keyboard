@@ -14,11 +14,11 @@ Original code (pre-library): https://github.com/NicoHood/HID[NicoHood/HID]
 
 ** https://github.com/aduitsis/ardumultimedia[Athanasios Douitsis Multimedia Keys Example]
 
-** https://github.com/arduino/Arduino/tree/master/hardware/arduino/firmwares/atmegaxxu2/arduino-usbserial[The Original Arduino Sources]
+** https://github.com/arduino/ArduinoCore-avr/tree/master/firmwares/atmegaxxu2/arduino-usbserial[The Original Arduino Sources]
 
 ** http://www.usblyzer.com/[USBlyzer]
 
-** https://www.mattairtech.com/index.php/development-boards/mt-db-u1.html[Mattairtechs 16u2 Lufa USB Core]
+** https://www.mattairtech.com/index.php/old-products/mt-db-u1.html[Mattairtechs 16u2 Lufa USB Core]
 
 ** https://github.com/pbrook/minimus-arduino[Paul Brook's Minimus 32u2 Arduino USB Core]
 
