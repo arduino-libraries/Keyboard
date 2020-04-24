@@ -85,7 +85,7 @@ void Keyboard_::end(void)
 
 void Keyboard_::sendReport(KeyReport* keys)
 {
-    HID().SendReport(2,keys,sizeof(KeyReport));
+    HID().SendReport(HID_REPORTID_KEYBOARD, keys, sizeof(KeyReport));
 }
 
 size_t Keyboard_::set(KeyboardKeycode k, bool s)
@@ -94,7 +94,8 @@ size_t Keyboard_::set(KeyboardKeycode k, bool s)
     if(k >= KEY_LEFT_CTRL && k <= KEY_RIGHT_GUI)
     {
         // Convert key into bitfield (0 - 7)
-        k = KeyboardKeycode(uint8_t(k) - uint8_t(KEY_LEFT_CTRL));
+        // k = KeyboardKeycode(uint8_t(k) - uint8_t(KEY_LEFT_CTRL));
+        k = _asciimap + k;
         if(s){
             _keyReport.modifiers |= (1 << k);
         }

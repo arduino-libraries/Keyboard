@@ -35,7 +35,7 @@
 
 #else
 
-#include "./KeyboardLayouts/ImprovedKeylayouts.h"
+#include "./KeyboardLayouts/KeyboardLayouts.h.h"
 
 //  Low level key report: up to 6 keys and shift, ctrl etc at once
 typedef struct
