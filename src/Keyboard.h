@@ -50,7 +50,7 @@ class Keyboard_ : public Print
 private:
   KeyReport _keyReport;
   void sendReport(KeyReport* keys);
-  size_t set(KeyboardKeycode k, bool s);
+  size_t set(uint8_t k, bool s);
 public:
   Keyboard_(void);
   void begin(void);

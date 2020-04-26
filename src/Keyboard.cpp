@@ -88,19 +88,19 @@ void Keyboard_::sendReport(KeyReport* keys)
     HID().SendReport(HID_REPORTID_KEYBOARD, keys, sizeof(KeyReport));
 }
 
-size_t Keyboard_::set(KeyboardKeycode k, bool s)
+size_t Keyboard_::set(uint8_t k, bool s)
 {
+    auto letter = keymap[(uint32_t)(k * 3)];
     // It's a modifier key
-    if(k >= KEY_LEFT_CTRL && k <= KEY_RIGHT_GUI)
+    if(letter >= KEY_LEFT_CTRL && letter <= KEY_RIGHT_GUI)
     {
         // Convert key into bitfield (0 - 7)
         // k = KeyboardKeycode(uint8_t(k) - uint8_t(KEY_LEFT_CTRL));
-        k = _asciimap + k;
         if(s){
-            _keyReport.modifiers |= (1 << k);
+            _keyReport.modifiers |= (1 << letter);
         }
         else{
-            _keyReport.modifiers &= ~(1 << k);
+            _keyReport.modifiers &= ~(1 << letter);
         }
         return 1;
     }
@@ -116,7 +116,7 @@ size_t Keyboard_::set(KeyboardKeycode k, bool s)
             {
                 auto key = _keyReport.keycodes[i];
                 // if target key is found
-                if (key == uint8_t(k)) {
+                if (key == letter) {
                     // do nothing and exit
                     return 1;
                 }
@@ -129,7 +129,7 @@ size_t Keyboard_::set(KeyboardKeycode k, bool s)
                 // if first instance of empty slot is found
                 if (key == KEY_RESERVED) {
                     // change empty slot to k and exit
-                    _keyReport.keycodes[i] = k;
+                    _keyReport.keycodes[i] = letter;
                     return 1;
                 }
             }
@@ -139,7 +139,7 @@ size_t Keyboard_::set(KeyboardKeycode k, bool s)
             {
                 auto key = _keyReport.keycodes[i];
                 // if target key is found
-                if (key == k) {
+                if (key == letter) {
                     // remove target and exit
                     _keyReport.keycodes[i] = KEY_RESERVED;
                     return 1;
@@ -161,7 +161,7 @@ uint8_t USBPutChar(uint8_t c);
 size_t Keyboard_::press(uint8_t k)
 {
     // Press key and send report to host
-    auto ret = set((KeyboardKeycode)k, true);
+    auto ret = set(k, true);
     if(ret){
         sendReport(&_keyReport);
         return 1;
@@ -174,7 +174,7 @@ size_t Keyboard_::press(uint8_t k)
 // it shouldn't be repeated any more.
 size_t Keyboard_::release(uint8_t k)
 {
-    auto ret = set((KeyboardKeycode)k, false);
+    auto ret = set(k, false);
     if(ret){
         sendReport(&_keyReport);
         return 1;
