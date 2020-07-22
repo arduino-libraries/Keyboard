@@ -58,6 +58,8 @@
 #define KEY_HOME      0xD2
 #define KEY_END       0xD5
 #define KEY_CAPS_LOCK   0xC1
+#define KEY_NUM_LOCK  0xDB
+#define KEY_SCROLL_LOCK 0xCF
 #define KEY_F1        0xC2
 #define KEY_F2        0xC3
 #define KEY_F3        0xC4
@@ -84,6 +86,10 @@
 #define KEY_F24       0xFB
 
 
+#define LED_CAPS_LOCK      0x02
+#define LED_NUM_LOCK       0x01
+#define LED_SCROLL_LOCK    0x04
+
 //  Low level key report: up to 6 keys and shift, ctrl etc at once
 typedef struct
 {
@@ -106,9 +112,9 @@ public:
   size_t press(uint8_t k);
   size_t release(uint8_t k);
   void releaseAll(void);
+  bool getLedStatus(uint8_t led);
 };
 extern Keyboard_ Keyboard;
 
 #endif
 #endif
-
