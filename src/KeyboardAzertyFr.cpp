@@ -74,16 +74,16 @@ void KeyboardAzertyFr_::end(void)
 {
 }
 
-void KeyboardAzertyFr_::sendReport(KeyReport* keys)
+void KeyboardAzertyFr_::sendReport(KeyReportFr* keys)
 {
-	HID().SendReport(2,keys,sizeof(KeyReport));
+	HID().SendReport(2,keys,sizeof(KeyReportFr));
 }
 
 extern
-const uint8_t _asciimap[128] PROGMEM;
+const uint8_t _asciimapFr[128] PROGMEM;
 
 #define SHIFT 0x80
-const uint8_t _asciimap[128] =
+const uint8_t _asciimapFr[128] =
 {
 	0x00,             // NUL
 	0x00,             // SOH
@@ -232,7 +232,7 @@ size_t KeyboardAzertyFr_::press(uint8_t k)
 		_keyReport.modifiers |= (1<<(k-128));
 		k = 0;
 	} else {				// it's a printing key
-		k = pgm_read_byte(_asciimap + k);
+		k = pgm_read_byte(_asciimapFr + k);
 		if (!k) {
 			setWriteError();
 			return 0;
@@ -276,7 +276,7 @@ size_t KeyboardAzertyFr_::release(uint8_t k)
 		_keyReport.modifiers &= ~(1<<(k-128));
 		k = 0;
 	} else {				// it's a printing key
-		k = pgm_read_byte(_asciimap + k);
+		k = pgm_read_byte(_asciimapFr + k);
 		if (!k) {
 			return 0;
 		}
