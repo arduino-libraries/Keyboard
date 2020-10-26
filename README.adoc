@@ -1,10 +1,9 @@
 = French AZERTY Keyboard Library for Arduino =
 
 This library allows an Arduino board with USB capabilites to act as a french AZERTY Keyboard.
-Being based on HID library you need to include "HID.h" in your sketch.
 
 For more information about the original Keyboard library please visit
-http://www.arduino.cc/en/Reference/Keyboard
+https://www.arduino.cc/reference/en/language/functions/usb/keyboard/
 
 == limitations ==
 

@@ -102,6 +102,7 @@ public:
   void begin(void);
   void end(void);
   size_t write(uint8_t k);
+  size_t write(const uint8_t *buffer, size_t size);
   size_t press(uint8_t k);
   size_t release(uint8_t k);
   void releaseAll(void);
