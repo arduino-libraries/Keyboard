@@ -90,13 +90,13 @@ typedef struct
   uint8_t modifiers;
   uint8_t reserved;
   uint8_t keys[6];
-} KeyReport;
+} KeyReportFr;
 
 class KeyboardAzertyFr_ : public Print
 {
 private:
-  KeyReport _keyReport;
-  void sendReport(KeyReport* keys);
+  KeyReportFr _keyReport;
+  void sendReport(KeyReportFr* keys);
 public:
   KeyboardAzertyFr_(void);
   void begin(void);
