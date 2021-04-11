@@ -5,7 +5,7 @@
 
 image:https://github.com/{repository-owner}/{repository-name}/actions/workflows/spell-check.yml/badge.svg["Spell Check status", link="https://github.com/{repository-owner}/{repository-name}/actions/workflows/spell-check.yml"]
 
-This library allows an Arduino board with USB capabilities to act as a Keyboard.
+This library allows an Arduino board with USB capabilities to act as a keyboard.
 
 For more information about this library please visit us at
 https://www.arduino.cc/reference/en/language/functions/usb/keyboard/

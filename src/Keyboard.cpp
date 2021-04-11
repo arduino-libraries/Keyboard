@@ -335,4 +335,3 @@ size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
 Keyboard_ Keyboard;
 
 #endif
-

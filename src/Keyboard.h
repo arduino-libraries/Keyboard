@@ -84,7 +84,7 @@
 #define KEY_F24       0xFB
 
 
-//  Low level key report: up to 6 keys and shift, ctrl etc at once
+// Low level key report: up to 6 keys and shift, ctrl etc at once
 typedef struct
 {
   uint8_t modifiers;
@@ -111,4 +111,3 @@ extern Keyboard_ Keyboard;
 
 #endif
 #endif
-
