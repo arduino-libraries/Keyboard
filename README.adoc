@@ -12,6 +12,16 @@ This library allows an Arduino board with USB capabilities to act as a keyboard.
 For more information about this library please visit us at
 https://www.arduino.cc/reference/en/language/functions/usb/keyboard/
 
+= Contributors =
+
+Original code (pre-library): Peter Barrett
+
+Contributor: MRNIU
+
+= Usage =
+
+See examples/Serial/Serial.ino
+
 == License ==
 
 Copyright (c) Arduino LLC. All right reserved.

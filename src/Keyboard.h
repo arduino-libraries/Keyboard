@@ -96,6 +96,7 @@ class Keyboard_ : public Print
 {
 private:
   KeyReport _keyReport;
+  size_t set(uint8_t k, bool s);
   void sendReport(KeyReport* keys);
 public:
   Keyboard_(void);
