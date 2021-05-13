@@ -1,7 +1,8 @@
 /*
   Keyboard.h
 
-  Copyright (c) 2015, Arduino LLC
+  Modified by Earle F. Philhower, III <earlephilhower@yahoo.com>
+  Main Arduino Library Copyright (c) 2015, Arduino LLC
   Original code (pre-library): Copyright (c) 2011, Peter Barrett
 
   This library is free software; you can redistribute it and/or
@@ -22,13 +23,7 @@
 #ifndef KEYBOARD_h
 #define KEYBOARD_h
 
-#include "HID.h"
-
-#if !defined(_USING_HID)
-
-#warning "Using legacy HID core (non pluggable)"
-
-#else
+#include <Arduino.h>
 
 //================================================================================
 //================================================================================
@@ -109,5 +104,4 @@ public:
 };
 extern Keyboard_ Keyboard;
 
-#endif
 #endif
