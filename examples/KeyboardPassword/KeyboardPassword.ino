@@ -5,6 +5,7 @@
 
 void setup() {
   Serial.begin(115200);
+  Keyboard.begin();
   delay(5000);
   Serial.printf("Arduino USB Password Typer\n");
   Serial.printf("Press BOOTSEL to enter your super-secure(not!) password\n\n");
@@ -12,6 +13,7 @@ void setup() {
 
 void loop() {
   if (BOOTSEL) {
+    Serial.println("Typing password for you...shhhh....");
     Keyboard.print("ThisPasswordIsWeakLikeABaby");
     while (BOOTSEL);
   }

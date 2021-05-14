@@ -21,20 +21,10 @@
 */
 
 #include "Keyboard.h"
+#include <RP2040USB.h>
 
 #include "tusb.h"
 #include "class/hid/hid_device.h"
-#include "class/audio/audio.h"
-#include "class/midi/midi.h"
-#include "pico/time.h"
-#include "pico/binary_info.h"
-#include "pico/bootrom.h"
-#include "hardware/irq.h"
-#include "pico/mutex.h"
-#include "hardware/watchdog.h"
-#include "pico/unique_id.h"
-
-extern mutex_t __usb_mutex;
 
 // Weak function override to add our descriptor to the TinyUSB list
 void __USBInstallKeyboard() { /* noop */ }
@@ -62,7 +52,7 @@ void Keyboard_::sendReport(KeyReport* keys)
     CoreMutex m(&__usb_mutex);
     tud_task();
     if (tud_hid_ready()) {
-        tud_hid_keyboard_report(1, keys->modifiers, keys->keys);
+        tud_hid_keyboard_report(__USBGetKeyboardReportID(), keys->modifiers, keys->keys);
     }
     tud_task();
 }
