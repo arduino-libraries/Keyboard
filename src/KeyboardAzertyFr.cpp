@@ -317,7 +317,7 @@ size_t KeyboardAzertyFr_::write(uint8_t c)
 	return p;              // just return the result of press() since release() almost always returns 1
 }
 
-size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
+size_t KeyboardAzertyFr_::write(const uint8_t *buffer, size_t size) {
 	size_t n = 0;
 	while (size--) {
 		if (*buffer != '\r') {
