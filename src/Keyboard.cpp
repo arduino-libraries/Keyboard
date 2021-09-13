@@ -1,19 +1,15 @@
 /*
   Keyboard.cpp
-
   Copyright (c) 2015, Arduino LLC
   Original code (pre-library): Copyright (c) 2011, Peter Barrett
-
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
   version 2.1 of the License, or (at your option) any later version.
-
   This library is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   Lesser General Public License for more details.
-
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
@@ -80,10 +76,11 @@ void Keyboard_::sendReport(KeyReport* keys)
 }
 
 extern
-const uint8_t _asciimap[128] PROGMEM;
+const uint16_t _asciimap[128] PROGMEM;
 
 #define SHIFT 0x80
-const uint8_t _asciimap[128] =
+#define ALTGR 0x100
+const uint16_t _asciimap[128] =
 {
 	0x00,             // NUL
 	0x00,             // SOH
@@ -232,14 +229,22 @@ size_t Keyboard_::press(uint8_t k)
 		_keyReport.modifiers |= (1<<(k-128));
 		k = 0;
 	} else {				// it's a printing key
-		k = pgm_read_byte(_asciimap + k);
-		if (!k) {
+		uint16_t x;
+		memcpy_P(&x,&_asciimap[k],2);
+		if (!x) {
 			setWriteError();
 			return 0;
 		}
-		if (k & 0x80) {						// it's a capital letter or other character reached with shift
-			_keyReport.modifiers |= 0x02;	// the left shift modifier
-			k &= 0x7F;
+		if (x & 0x80) {						// it's a capital letter or other character reached with shift
+			_keyReport.modifiers |= 0x02;			// the left shift modifier
+			x &= 0x7F;
+			k = (uint8_t)x;
+		} else if(x & 0x100){
+			_keyReport.modifiers |= 0x05;
+			x &= 0xFF;
+			k = (uint8_t)x;
+		} else {
+			k = (uint8_t)x;
 		}
 	}
 
@@ -276,13 +281,21 @@ size_t Keyboard_::release(uint8_t k)
 		_keyReport.modifiers &= ~(1<<(k-128));
 		k = 0;
 	} else {				// it's a printing key
-		k = pgm_read_byte(_asciimap + k);
-		if (!k) {
+		uint16_t x;
+		memcpy_P(&x,&_asciimap[k],2);
+		if (!x) {
 			return 0;
 		}
-		if (k & 0x80) {							// it's a capital letter or other character reached with shift
+		if (x & 0x80) {							// it's a capital letter or other character reached with shift
 			_keyReport.modifiers &= ~(0x02);	// the left shift modifier
-			k &= 0x7F;
+			x &= 0x7F;
+			k = (uint8_t)x;
+		} else if(x & 0x100){
+			_keyReport.modifiers &= ~(0x05);
+			x &= 0xFF;
+			k = (uint8_t)x;
+		} else {
+			k = (uint8_t)x;
 		}
 	}
 
