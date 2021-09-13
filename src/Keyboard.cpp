@@ -239,8 +239,8 @@ size_t Keyboard_::press(uint8_t k)
 			_keyReport.modifiers |= 0x02;			// the left shift modifier
 			x &= 0x7F;
 			k = (uint8_t)x;
-		} else if(x & 0x100){
-			_keyReport.modifiers |= 0x05;
+		} else if(x & 0x100) {					// it's a character reached with alt gr aka. right alt
+			_keyReport.modifiers |= 0x05;			// alt gr aka. right alt modifier
 			x &= 0xFF;
 			k = (uint8_t)x;
 		} else {
@@ -290,8 +290,8 @@ size_t Keyboard_::release(uint8_t k)
 			_keyReport.modifiers &= ~(0x02);	// the left shift modifier
 			x &= 0x7F;
 			k = (uint8_t)x;
-		} else if(x & 0x100){
-			_keyReport.modifiers &= ~(0x05);
+		} else if(x & 0x100){						// it's a character reached with alt gr aka. right alt
+			_keyReport.modifiers &= ~(0x05);			// alt gr aka. right alt modifier
 			x &= 0xFF;
 			k = (uint8_t)x;
 		} else {
