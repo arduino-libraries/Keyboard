@@ -83,6 +83,8 @@
 #define KEY_F23           0xFA
 #define KEY_F24           0xFB
 
+// Supported keyboard layouts
+extern const uint8_t KeyboardLayout_en_US[];
 
 // Low level key report: up to 6 keys and shift, ctrl etc at once
 typedef struct
@@ -96,10 +98,11 @@ class Keyboard_ : public Print
 {
 private:
   KeyReport _keyReport;
+  const uint8_t *_asciimap;
   void sendReport(KeyReport* keys);
 public:
   Keyboard_(void);
-  void begin(void);
+  void begin(const uint8_t *layout = KeyboardLayout_en_US);
   void end(void);
   size_t write(uint8_t k);
   size_t write(const uint8_t *buffer, size_t size);
