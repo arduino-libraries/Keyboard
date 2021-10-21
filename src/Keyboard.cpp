@@ -65,7 +65,7 @@ Keyboard_::Keyboard_(void)
 {
 	static HIDSubDescriptor node(_hidReportDescriptor, sizeof(_hidReportDescriptor));
 	HID().AppendDescriptor(&node);
-	_asciimap = 0;
+	_asciimap = KeyboardLayout_en_US;
 }
 
 void Keyboard_::begin(const uint8_t *layout)
@@ -90,10 +90,6 @@ uint8_t USBPutChar(uint8_t c);
 // call release(), releaseAll(), or otherwise clear the report and resend.
 size_t Keyboard_::press(uint8_t k)
 {
-	// Do not be too harsh on users who forget to begin().
-	if (!_asciimap) {
-		begin();
-	}
 	uint8_t i;
 	if (k >= 136) {			// it's a non-printing key (not a modifier)
 		k = k - 136;
