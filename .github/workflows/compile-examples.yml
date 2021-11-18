@@ -40,18 +40,6 @@ jobs:
           - fqbn: arduino:samd:mkrzero
             platforms: |
               - name: arduino:samd
-          - fqbn: arduino:mbed_portenta:envie_m4
-            platforms: |
-              - name: arduino:mbed_portenta
-          - fqbn: arduino:mbed_portenta:envie_m7
-            platforms: |
-              - name: arduino:mbed_portenta
-          - fqbn: arduino:mbed_nano:nano33ble
-            platforms: |
-              - name: arduino:mbed_nano
-          - fqbn: arduino:mbed_nano:nanorp2040connect
-            platforms: |
-              - name: arduino:mbed_nano
 
     steps:
       - name: Checkout repository
