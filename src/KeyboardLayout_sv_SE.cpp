@@ -133,6 +133,6 @@ extern const uint8_t KeyboardLayout_sv_SE[128] PROGMEM =
 	0x24|ALT_GR,   // {
 	0x62|ALT_GR,   // |
 	0x27|ALT_GR,   // }
-	0x30|ALT_GR,   // ~ 
+	0x00,          // ~  not supported (requires dead key + space)
 	0x00           // DEL
 };
