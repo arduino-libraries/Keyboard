@@ -103,7 +103,7 @@ extern const uint8_t KeyboardLayout_sv_SE[128] PROGMEM =
 	0x26|ALT_GR,   // ]
 	0x00,          // ^  not supported (requires dead key + space)
 	0x38|SHIFT,    // _
-	0x24|SHIFT,    // `
+	0x00,          // `  not supported (requires dead key + space)
 	0x04,          // a
 	0x05,          // b
 	0x06,          // c
