@@ -49,7 +49,7 @@ extern const uint8_t KeyboardLayout_sv_SE[128] PROGMEM =
 	0x31,          // '
 	0x25|SHIFT,    // (
 	0x26|SHIFT,    // )
-	0x32|SHIFT,    // *
+	0x31|SHIFT,    // *
 	0x2d,          // +
 	0x36,          // ,
 	0x38,          // -
