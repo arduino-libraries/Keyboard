@@ -49,6 +49,16 @@ static const uint8_t _hidReportDescriptor[] PROGMEM = {
     0x75, 0x08,                    //   REPORT_SIZE (8)
     0x81, 0x03,                    //   INPUT (Cnst,Var,Abs)
 
+    0x95, 0x05,                    //   REPORT_COUNT (5)
+    0x75, 0x01,                    //   REPORT_SIZE (1)
+    0x05, 0x08,                    //   USAGE_PAGE (LEDs)
+    0x19, 0x01,                    //   USAGE_MINIMUM (1)
+    0x29, 0x05,                    //   USAGE_MAXIMUM (5)
+    0x91, 0x02,                    //   OUTPUT (Data,Var,Abs) // LED report
+    0x95, 0x01,                    //   REPORT_COUNT (1)
+    0x75, 0x03,                    //   REPORT_SIZE (3)
+    0x91, 0x01,                    //   OUTPUT (Constant) // padding 
+
     0x95, 0x06,                    //   REPORT_COUNT (6)
     0x75, 0x08,                    //   REPORT_SIZE (8)
     0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
@@ -208,6 +218,26 @@ size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
 	}
 	return n;
 }
+
+bool Keyboard_::getLedStatus(uint8_t led)
+{
+	uint8_t _keyboardLedsStatus = HID().getKeyboardLedsStatus();
+	if (led == LED_CAPS_LOCK) {
+		if (_keyboardLedsStatus == 2 || _keyboardLedsStatus == 3 || _keyboardLedsStatus == 6 || _keyboardLedsStatus == 7) {
+			return true;
+		}
+	} else if (led == LED_NUM_LOCK) {
+		if (_keyboardLedsStatus == 1 || _keyboardLedsStatus == 3 || _keyboardLedsStatus == 5 || _keyboardLedsStatus == 7) {
+			return true;
+		}
+	} else if (led == LED_SCROLL_LOCK) {
+		if (_keyboardLedsStatus == 4 || _keyboardLedsStatus == 5 || _keyboardLedsStatus == 6 || _keyboardLedsStatus == 7) {
+			return true;
+		}
+	}
+	return false;
+}
+
 
 Keyboard_ Keyboard;
 
