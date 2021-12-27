@@ -223,15 +223,15 @@ bool Keyboard_::getLedStatus(uint8_t led)
 {
 	uint8_t _keyboardLedsStatus = HID().getKeyboardLedsStatus();
 	if (led == LED_CAPS_LOCK) {
-		if (_keyboardLedsStatus == 2 || _keyboardLedsStatus == 3 || _keyboardLedsStatus == 6 || _keyboardLedsStatus == 7) {
+		if (_keyboardLedsStatus & 2) {
 			return true;
 		}
 	} else if (led == LED_NUM_LOCK) {
-		if (_keyboardLedsStatus == 1 || _keyboardLedsStatus == 3 || _keyboardLedsStatus == 5 || _keyboardLedsStatus == 7) {
+		if (_keyboardLedsStatus & 1) {
 			return true;
 		}
 	} else if (led == LED_SCROLL_LOCK) {
-		if (_keyboardLedsStatus == 4 || _keyboardLedsStatus == 5 || _keyboardLedsStatus == 6 || _keyboardLedsStatus == 7) {
+		if (_keyboardLedsStatus & 4) {
 			return true;
 		}
 	}
