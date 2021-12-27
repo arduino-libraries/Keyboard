@@ -222,20 +222,29 @@ size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
 bool Keyboard_::getLedStatus(uint8_t led)
 {
 	uint8_t _keyboardLedsStatus = HID().getKeyboardLedsStatus();
-	if (led == LED_CAPS_LOCK) {
-		if (_keyboardLedsStatus & 2) {
-			return true;
-		}
-	} else if (led == LED_NUM_LOCK) {
-		if (_keyboardLedsStatus & 1) {
-			return true;
-		}
-	} else if (led == LED_SCROLL_LOCK) {
-		if (_keyboardLedsStatus & 4) {
-			return true;
-		}
+	switch(led)
+	{
+		case LED_NUM_LOCK:
+			if (_keyboardLedsStatus & LED_NUM_LOCK) {
+				return true;
+			}
+			break;
+		case LED_CAPS_LOCK:
+			if (_keyboardLedsStatus & LED_CAPS_LOCK) {
+				return true;
+			}
+			break;
+		case LED_SCROLL_LOCK:
+			if (_keyboardLedsStatus & LED_SCROLL_LOCK) {
+				return true;
+			}
+			break;
+		default:
+			return false;
+			break;     
 	}
-	return false;
+	return false;    
+
 }
 
 
