@@ -110,9 +110,6 @@
 #define KEY_F23           0xFA
 #define KEY_F24           0xFB
 
-#define KEY_NUM_LOCK       0xDB
-#define KEY_SCROLL_LOCK    0xCF
-
 #define LED_CAPS_LOCK      0x02
 #define LED_NUM_LOCK       0x01
 #define LED_SCROLL_LOCK    0x04
