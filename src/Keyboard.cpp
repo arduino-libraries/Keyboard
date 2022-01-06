@@ -203,7 +203,6 @@ cycles++;
     // if there is any keyboard activity... scan the keys
     if (incoming | last_incoming_bytes[column] | last_incoming_bytes[column+MAX_COLUMNS/2] )
     {
-      key_timer=micros();
       incoming1 = read_shift_register( increment_decade_counter2 );
       decode( column,                 incoming1 );
       incoming2 = read_shift_register( increment_decade_counter1 );
@@ -353,9 +352,7 @@ void decode( uint8_t column, uint8_t incoming_byte)
 #if DEBUG
       debugReportPressedKey(column, row, incoming_byte, last_incoming_byte);
 #endif
-Serial.println(((float)(micros()-key_timer))/1000000.0,9);
       Keyboard.press(key);
-Serial.println(((float)(micros()-key_timer))/1000000.0,9);
       delay(5); // debounce
     }
     // a key released that was previously pressed has been released
