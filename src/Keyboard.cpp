@@ -25,7 +25,7 @@
 #define MAX_COLUMNS              20
 #define MAX_ROWS                  8
 
-#define DEBUG                     1
+#define DEBUG                     0
 
 #define SHIFT_OR_LOAD_PIN         2
 #define CLOCK_PIN                 3
