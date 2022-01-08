@@ -2,7 +2,6 @@
   Keyboard.cpp
 
   Copyright (c) 2015, Arduino LLC
-
   Original code (pre-library): Copyright (c) 2011, Peter Barrett
 
   This library is free software; you can redistribute it and/or
