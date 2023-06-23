@@ -110,6 +110,10 @@
 #define KEY_F23           0xFA
 #define KEY_F24           0xFB
 
+#define LED_CAPS_LOCK      0x02
+#define LED_NUM_LOCK       0x01
+#define LED_SCROLL_LOCK    0x04
+
 // Supported keyboard layouts
 extern const uint8_t KeyboardLayout_de_DE[];
 extern const uint8_t KeyboardLayout_en_US[];
@@ -143,6 +147,7 @@ public:
   size_t press(uint8_t k);
   size_t release(uint8_t k);
   void releaseAll(void);
+  bool getLedStatus(uint8_t led);
 };
 extern Keyboard_ Keyboard;
 
