@@ -1,7 +1,7 @@
 /*
   Keyboard_hu_HU.h
 
-  Copyright (c) 2022, Edgar Bonet
+  Copyright (c) 2023, Barab(0x34)si Rich(0x34)rd
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -34,19 +34,19 @@
 //  Keyboard
 
 // hu_HU keys
-#define KEY_O_SLASH             0x2e
-#define KEY_O_TWO_DOTS          0x27
-#define KEY_O_DOUBLE_SLASH      0x2f
+#define KEY_O_ACUTE             (136+0x2e)
+#define KEY_O_UMLAUT            (136+0x27)
+#define KEY_O_DOUBLE_ACUTE      (136+0x2f)
 
-#define KEY_U_SLASH             0x30
-#define KEY_U_TWO_DOTS          0x2d
-#define KEY_U_DOUBLE_SLASH      0x31
+#define KEY_U_ACUTE             (136+0x30)
+#define KEY_U_UMLAUT            (136+0x2d)
+#define KEY_U_DOUBLE_ACUTE      (136+0x31)
 
-#define KEY_A_SLASH             0x34
+#define KEY_A_ACUTE             (136+0x34)
 
-#define KEY_E_SLASH             0x33
+#define KEY_E_ACUTE             (136+0x33)
 
-#define KEY_I_SLASH             0x32
+#define KEY_I_ACUTE             (136+0x32)
 
 #endif
 #endif
