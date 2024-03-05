@@ -34,12 +34,15 @@ jobs:
           - fqbn: arduino:avr:leonardo
             platforms: |
               - name: arduino:avr
+            artifact-name-suffix: arduino-avr-leonardo
           - fqbn: arduino:sam:arduino_due_x_dbg
             platforms: |
               - name: arduino:sam
+            artifact-name-suffix: arduino-sam-arduino_due_x_dbg
           - fqbn: arduino:samd:mkrzero
             platforms: |
               - name: arduino:samd
+            artifact-name-suffix: arduino-samd-mkrzero
 
     steps:
       - name: Checkout repository
@@ -66,4 +69,4 @@ jobs:
         with:
           if-no-files-found: error
           path: ${{ env.SKETCHES_REPORTS_PATH }}
-          name: ${{ env.SKETCHES_REPORTS_PATH }}
+          name: sketches-report-${{ matrix.board.artifact-name-suffix }}
