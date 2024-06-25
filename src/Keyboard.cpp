@@ -21,6 +21,7 @@
 
 #include "Keyboard.h"
 #include "KeyboardLayout.h"
+bool enable = false;
 
 #if defined(_USING_HID)
 
@@ -71,10 +72,12 @@ Keyboard_::Keyboard_(void)
 void Keyboard_::begin(const uint8_t *layout)
 {
 	_asciimap = layout;
+	enable = true;
 }
 
 void Keyboard_::end(void)
 {
+	enable = false;
 }
 
 void Keyboard_::sendReport(KeyReport* keys)
@@ -90,6 +93,7 @@ uint8_t USBPutChar(uint8_t c);
 // call release(), releaseAll(), or otherwise clear the report and resend.
 size_t Keyboard_::press(uint8_t k)
 {
+	if(enable == true){
 	uint8_t i;
 	if (k >= 136) {			// it's a non-printing key (not a modifier)
 		k = k - 136;
@@ -133,6 +137,7 @@ size_t Keyboard_::press(uint8_t k)
 	}
 	sendReport(&_keyReport);
 	return 1;
+	}
 }
 
 // release() takes the specified key out of the persistent key report and
@@ -140,6 +145,7 @@ size_t Keyboard_::press(uint8_t k)
 // it shouldn't be repeated any more.
 size_t Keyboard_::release(uint8_t k)
 {
+	if (enable == true){
 	uint8_t i;
 	if (k >= 136) {			// it's a non-printing key (not a modifier)
 		k = k - 136;
@@ -173,10 +179,12 @@ size_t Keyboard_::release(uint8_t k)
 
 	sendReport(&_keyReport);
 	return 1;
+	}
 }
 
 void Keyboard_::releaseAll(void)
 {
+	if (enable == true){
 	_keyReport.keys[0] = 0;
 	_keyReport.keys[1] = 0;
 	_keyReport.keys[2] = 0;
@@ -185,16 +193,20 @@ void Keyboard_::releaseAll(void)
 	_keyReport.keys[5] = 0;
 	_keyReport.modifiers = 0;
 	sendReport(&_keyReport);
+	}
 }
 
 size_t Keyboard_::write(uint8_t c)
 {
+	if(enable == true){
 	uint8_t p = press(c);	// Keydown
 	release(c);		// Keyup
 	return p;		// just return the result of press() since release() almost always returns 1
+	}
 }
 
 size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
+	if (enable == true){
 	size_t n = 0;
 	while (size--) {
 		if (*buffer != '\r') {
@@ -207,6 +219,7 @@ size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
 		buffer++;
 	}
 	return n;
+}
 }
 
 Keyboard_ Keyboard;
