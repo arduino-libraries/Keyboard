@@ -93,50 +93,50 @@ uint8_t USBPutChar(uint8_t c);
 // call release(), releaseAll(), or otherwise clear the report and resend.
 size_t Keyboard_::press(uint8_t k)
 {
-	if(enable == true){
-	uint8_t i;
-	if (k >= 136) {			// it's a non-printing key (not a modifier)
-		k = k - 136;
-	} else if (k >= 128) {	// it's a modifier key
-		_keyReport.modifiers |= (1<<(k-128));
-		k = 0;
-	} else {				// it's a printing key
-		k = pgm_read_byte(_asciimap + k);
-		if (!k) {
+	if ( enable == true){
+		uint8_t i;
+		if (k >= 136) {			// it's a non-printing key (not a modifier)
+			k = k - 136;
+		} else if (k >= 128) {	// it's a modifier key
+			_keyReport.modifiers |= (1<<(k-128));
+			k = 0;
+		} else {				// it's a printing key
+			k = pgm_read_byte(_asciimap + k);
+			if (!k) {
 			setWriteError();
 			return 0;
-		}
-		if ((k & ALT_GR) == ALT_GR) {
-			_keyReport.modifiers |= 0x40;   // AltGr = right Alt
-			k &= 0x3F;
-		} else if ((k & SHIFT) == SHIFT) {
-			_keyReport.modifiers |= 0x02;	// the left shift modifier
-			k &= 0x7F;
-		}
-		if (k == ISO_REPLACEMENT) {
-			k = ISO_KEY;
-		}
-	}
-
-	// Add k to the key report only if it's not already present
-	// and if there is an empty slot.
-	if (_keyReport.keys[0] != k && _keyReport.keys[1] != k &&
-		_keyReport.keys[2] != k && _keyReport.keys[3] != k &&
-		_keyReport.keys[4] != k && _keyReport.keys[5] != k) {
-
-		for (i=0; i<6; i++) {
-			if (_keyReport.keys[i] == 0x00) {
-				_keyReport.keys[i] = k;
-				break;
+			}
+			if ((k & ALT_GR) == ALT_GR) {
+				_keyReport.modifiers |= 0x40;   // AltGr = right Alt
+				k &= 0x3F;
+			} else if ((k & SHIFT) == SHIFT) {
+				_keyReport.modifiers |= 0x02;	// the left shift modifier
+				k &= 0x7F;
+			}
+			if (k == ISO_REPLACEMENT) {
+				k = ISO_KEY;
 			}
 		}
-		if (i == 6) {
-			setWriteError();
-			return 0;
+	
+		// Add k to the key report only if it's not already present
+		// and if there is an empty slot.
+		if (_keyReport.keys[0] != k && _keyReport.keys[1] != k &&
+			_keyReport.keys[2] != k && _keyReport.keys[3] != k &&
+			_keyReport.keys[4] != k && _keyReport.keys[5] != k) {
+	
+			for (i=0; i<6; i++) {
+				if (_keyReport.keys[i] == 0x00) {
+					_keyReport.keys[i] = k;
+					break;
+				}
+			}
+			if (i == 6) {
+				setWriteError();
+				return 0;
+			}
 		}
-	}
-	sendReport(&_keyReport);
-	return 1;
+		sendReport(&_keyReport);
+		return 1;
 	}
 }
 
@@ -145,81 +145,81 @@ size_t Keyboard_::press(uint8_t k)
 // it shouldn't be repeated any more.
 size_t Keyboard_::release(uint8_t k)
 {
-	if (enable == true){
-	uint8_t i;
-	if (k >= 136) {			// it's a non-printing key (not a modifier)
-		k = k - 136;
-	} else if (k >= 128) {	// it's a modifier key
-		_keyReport.modifiers &= ~(1<<(k-128));
-		k = 0;
-	} else {				// it's a printing key
-		k = pgm_read_byte(_asciimap + k);
-		if (!k) {
-			return 0;
+	if ( enable == true){
+		uint8_t i;
+		if (k >= 136) {			// it's a non-printing key (not a modifier)
+			k = k - 136;
+		} else if (k >= 128) {	// it's a modifier key
+			_keyReport.modifiers &= ~(1<<(k-128));
+			k = 0;
+		} else {				// it's a printing key
+			k = pgm_read_byte(_asciimap + k);
+			if (!k) {
+				return 0;
+			}
+			if ((k & ALT_GR) == ALT_GR) {
+				_keyReport.modifiers &= ~(0x40);   // AltGr = right Alt
+				k &= 0x3F;
+			} else if ((k & SHIFT) == SHIFT) {
+				_keyReport.modifiers &= ~(0x02);	// the left shift modifier
+				k &= 0x7F;
+			}
+			if (k == ISO_REPLACEMENT) {
+				k = ISO_KEY;
+			}
 		}
-		if ((k & ALT_GR) == ALT_GR) {
-			_keyReport.modifiers &= ~(0x40);   // AltGr = right Alt
-			k &= 0x3F;
-		} else if ((k & SHIFT) == SHIFT) {
-			_keyReport.modifiers &= ~(0x02);	// the left shift modifier
-			k &= 0x7F;
+	
+		// Test the key report to see if k is present.  Clear it if it exists.
+		// Check all positions in case the key is present more than once (which it shouldn't be)
+		for (i=0; i<6; i++) {
+			if (0 != k && _keyReport.keys[i] == k) {
+				_keyReport.keys[i] = 0x00;
+			}
 		}
-		if (k == ISO_REPLACEMENT) {
-			k = ISO_KEY;
-		}
-	}
-
-	// Test the key report to see if k is present.  Clear it if it exists.
-	// Check all positions in case the key is present more than once (which it shouldn't be)
-	for (i=0; i<6; i++) {
-		if (0 != k && _keyReport.keys[i] == k) {
-			_keyReport.keys[i] = 0x00;
-		}
-	}
-
-	sendReport(&_keyReport);
-	return 1;
+	
+		sendReport(&_keyReport);
+		return 1;
 	}
 }
 
 void Keyboard_::releaseAll(void)
 {
 	if (enable == true){
-	_keyReport.keys[0] = 0;
-	_keyReport.keys[1] = 0;
-	_keyReport.keys[2] = 0;
-	_keyReport.keys[3] = 0;
-	_keyReport.keys[4] = 0;
-	_keyReport.keys[5] = 0;
-	_keyReport.modifiers = 0;
-	sendReport(&_keyReport);
+		_keyReport.keys[0] = 0;
+		_keyReport.keys[1] = 0;
+		_keyReport.keys[2] = 0;
+		_keyReport.keys[3] = 0;
+		_keyReport.keys[4] = 0;
+		_keyReport.keys[5] = 0;
+		_keyReport.modifiers = 0;
+		sendReport(&_keyReport);
 	}
 }
 
 size_t Keyboard_::write(uint8_t c)
 {
-	if(enable == true){
-	uint8_t p = press(c);	// Keydown
-	release(c);		// Keyup
-	return p;		// just return the result of press() since release() almost always returns 1
+	if ( enable == true){
+		uint8_t p = press(c);	// Keydown
+		release(c);		// Keyup
+		return p;		// just return the result of press() since release() almost always returns 1
 	}
 }
 
 size_t Keyboard_::write(const uint8_t *buffer, size_t size) {
-	if (enable == true){
-	size_t n = 0;
-	while (size--) {
-		if (*buffer != '\r') {
-			if (write(*buffer)) {
-				n++;
-			} else {
-				break;
+	if ( enable == true){
+		size_t n = 0;
+		while (size--) {
+			if (*buffer != '\r') {
+				if (write(*buffer)) {
+					n++;
+				} else {
+					break;
+				}
 			}
+			buffer++;
 		}
-		buffer++;
+		return n;
 	}
-	return n;
-}
 }
 
 Keyboard_ Keyboard;
