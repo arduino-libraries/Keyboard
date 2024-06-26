@@ -21,7 +21,7 @@
 
 #include "Keyboard.h"
 #include "KeyboardLayout.h"
-bool enable = false;
+static bool enable = false;
 
 #if defined(_USING_HID)
 
