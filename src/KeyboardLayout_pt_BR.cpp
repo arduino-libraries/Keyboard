@@ -14,7 +14,6 @@ extern const uint8_t KeyboardLayout_pt_BR[128] PROGMEM =
 	0x00,          // ENQ
 	0x00,          // ACK
 	0x00,          // BEL
-
 	0x2a,          // BS  Backspace
 	0x2b,          // TAB Tab
 	0x28,          // LF  Enter
@@ -34,7 +33,7 @@ extern const uint8_t KeyboardLayout_pt_BR[128] PROGMEM =
 	0x00,          // CAN
 	0x00,          // EM
 	0x00,          // SUB
-	0x29,          // ESC
+	0x00,          // ESC
 	0x00,          // FS
 	0x00,          // GS
 	0x00,          // RS
@@ -55,8 +54,7 @@ extern const uint8_t KeyboardLayout_pt_BR[128] PROGMEM =
 	0x36,          // ,
 	0x2D,          // -
 	0x37,          // .
-	0x54,	       // /
-
+	0x14|ALT_GR,   // /
 	0x27,          // 0
 	0x1e,          // 1
 	0x1f,          // 2
@@ -68,13 +66,12 @@ extern const uint8_t KeyboardLayout_pt_BR[128] PROGMEM =
 	0x25,          // 8
 	0x26,          // 9
 	0x38|SHIFT,    // :
-	0x38,	       // ;
-	0x36|SHIFT,     // <
+	0x38,          // ;
+	0x36|SHIFT,    // <
 	0x2e,          // =
 	0x37|SHIFT,    // >
-	0x54|SHIFT,    // ? ???
+	0x1a|ALT_GR,   // ?
 	0x1f|SHIFT,    // @
-
 	0x04|SHIFT,    // A
 	0x05|SHIFT,    // B
 	0x06|SHIFT,    // C
@@ -101,14 +98,12 @@ extern const uint8_t KeyboardLayout_pt_BR[128] PROGMEM =
 	0x1b|SHIFT,    // X
 	0x1c|SHIFT,    // Y
 	0x1d|SHIFT,    // Z
-
 	0x30,          // [
-	0x64,          // bslash
-	0x31,  	       // ]
-	0x34|SHIFT,    // ^  not supported (requires dead key + space)
+	0x32,          // bslash
+	0x31,          // ]
+	0x00,          // ^  not supported (requires dead key + space)
 	0x2d|SHIFT,    // _
-	0x2f|SHIFT,    // `  not supported (requires dead key + space)
-
+	0x00,          // `  not supported (requires dead key + space)
 	0x04,          // a
 	0x05,          // b
 	0x06,          // c
@@ -135,10 +130,9 @@ extern const uint8_t KeyboardLayout_pt_BR[128] PROGMEM =
 	0x1b,          // x
 	0x1c,          // y
 	0x1d,          // z
-
-	0x30|SHIFT,   // {
-	0x64|SHIFT,    // |
-	0x31|SHIFT,   // }
-	0x34,          // ~  not supported (requires dead key + space)
+	0x30|SHIFT,    // {
+	0x32|SHIFT,    // |
+	0x31|SHIFT,    // }
+	0x00,          // ~  not supported (requires dead key + space)
 	0x00           // DEL
 };

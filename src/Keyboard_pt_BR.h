@@ -1,7 +1,5 @@
 /*
-  Keyboard_pt_PT.h
-
-  Copyright (c) 2022, Edgar Bonet
+  Keyboard_pt_BR.h
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -34,8 +32,6 @@
 //  Keyboard
 
 // pt_BR keys
-#define KEY_MASCULINE_ORDINAL    (136+0x31)
-#define KEY_SIX                  (136+0x23)
 #define KEY_ACUTE                (136+0x2f)
 #define KEY_C_CEDILLA            (136+0x33)
 #define KEY_TILDE                (136+0x34)
