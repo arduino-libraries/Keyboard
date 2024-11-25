@@ -1,5 +1,5 @@
 /*
- * Portuguese keyboard layout.
+ * Brazilian Portuguese keyboard layout.
  */
 
 #include "KeyboardLayout.h"
