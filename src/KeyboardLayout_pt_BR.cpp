@@ -45,7 +45,7 @@ extern const uint8_t KeyboardLayout_pt_BR[128] PROGMEM =
 	0x20|SHIFT,    // #
 	0x21|SHIFT,    // $
 	0x22|SHIFT,    // %
-	0x23|SHIFT,    // &
+	0x24|SHIFT,    // &
 	0x35,          // '
 	0x26|SHIFT,    // (
 	0x27|SHIFT,    // )
